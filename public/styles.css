@@ -1,0 +1,499 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* General Container */
+.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #ff4081;
+}
+
+/* Toggle Buttons */
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 10px;
+}
+
+.toggle-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toggle-buttons button.active,
+.toggle-buttons button:hover {
+  background: #ff4081;
+}
+
+/* Forms */
+.room-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #1e1e1e;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.room-form input,
+.room-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.room-form input {
+  background: #2c2c2c;
+  color: #fff;
+}
+
+.room-form button {
+  background: #ff4081;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.room-form button:hover {
+  background: #e73370;
+}
+
+/* Hidden Class */
+.hidden {
+  display: none !important;
+}
+
+/* Footer style — sticks to bottom */
+.page-footer {
+  width: 100%;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 14px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+/* Span highlight */
+.page-footer span {
+  color: #ff69b4; /* Pinkish accent */
+  font-weight: bold;
+}
+
+/* Full-page layout fix for sticky footer */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make container take all available height */
+.container, .room-container {
+  flex: 1 0 auto;
+}
+
+/* Footer should stay at the bottom */
+.page-footer {
+  flex-shrink: 0;
+}
+
+/* Room Page */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e1e1e;
+  padding: 1rem;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  color: #ff4081;
+}
+
+#menuToggle,
+#exitBtn {
+  background: #333;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#menuToggle:hover,
+#exitBtn:hover {
+  background: #ff4081;
+}
+
+/* Sidebar container */
+#sideMenu {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 280px;
+  height: 100vh;
+  background-color: #222;
+  color: white;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+  padding: 20px;
+  box-sizing: border-box;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Show sidebar */
+#sideMenu:not(.hidden) {
+  left: 0;
+}
+
+/* Close button */
+#sideMenu .close-btn {
+  align-self: flex-end;
+  font-size: 28px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  user-select: none;
+  background: none;
+  border: none;
+  color: white;
+  transition: color 0.2s ease;
+}
+
+#sideMenu .close-btn:hover {
+  color: #ff5555;
+}
+
+/* Sidebar list */
+#sideMenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#sideMenu ul li {
+  padding: 12px 16px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+#sideMenu ul li:hover {
+  background-color: #444;
+}
+
+/* Responsive for mobile */
+@media (max-width: 480px) {
+  #sideMenu {
+    width: 240px;
+    padding: 16px;
+  }
+  #sideMenu ul li {
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+}
+
+/* Room Content */
+.room-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+#roomTitle {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  color: #ccc;
+}
+
+video {
+  width: 100%;
+  max-height: 400px;
+  background: #000;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+/* Upload Form */
+#uploadForm {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#uploadForm input,
+#uploadForm button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+#uploadForm button {
+  background: #ff4081;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#uploadForm button:hover {
+  background: #e73370;
+}
+
+/* YouTube Section */
+#youtubeSection {
+  margin-top: 2rem;
+}
+
+#youtubeSection input {
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto;
+  border-radius: 5px;
+  border: none;
+  background: #2c2c2c;
+  color: #fff;
+}
+
+#youtubeSection button {
+  padding: 10px 20px;
+  background: #ff4081;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#youtubeSection button:hover {
+  background: #e73370;
+}
+
+#ytPlayer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Chat Box */
+#chatBox {
+  margin-top: 2rem;
+  background: #1e1e1e;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 320px; /* fixed height to enable consistent scrolling */
+}
+
+/* Messages container with scrolling */
+#messages {
+  flex: 1;               /* fills vertical space inside chatBox */
+  max-height: 100%;      /* fill parent's height */
+  overflow-y: auto;
+  background: #111;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  scroll-behavior: smooth; /* smooth scrolling */
+}
+
+/* Custom scrollbar for WebKit browsers */
+#messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+#messages::-webkit-scrollbar-track {
+  background: #222;
+  border-radius: 5px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 5px;
+}
+
+#messages::-webkit-scrollbar-thumb:hover {
+  background: #ff4081;
+}
+
+/* Individual messages */
+#messages div {
+  padding: 5px;
+  border-bottom: 1px solid #333;
+}
+
+/* Input and send button container */
+#chatBox > div:last-child {
+  display: flex;
+  gap: 8px;
+}
+
+/* Input field */
+#chatInput {
+  flex: 1;
+  padding: 10px;
+  background: #2c2c2c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Send button */
+#sendMsgBtn {
+  background: #ff4081;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#sendMsgBtn:hover {
+  background: #e73370;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff4081;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #222;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container,
+  .room-container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  #ytPlayer iframe {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Upload Form Styling */
+#uploadForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* File Input */
+#videoFile {
+  background-color: #2c2c2c;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Upload Button */
+#uploadForm button[type="submit"] {
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#uploadForm button[type="submit"]:hover {
+  background-color: #e73370;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #uploadForm {
+    padding: 0.8rem;
+  }
+
+  #uploadForm button,
+  #videoFile {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}
+
+  .toggle-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #chatBox {
+    padding: 0.75rem;
+  }
+
+  #messages {
+    max-height: 150px;
+  }
+}
+

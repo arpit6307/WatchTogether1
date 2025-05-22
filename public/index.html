@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WatchTogether</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+       <h1>WatchTogether 💖</h1>
+       <div class="toggle-buttons">
+           <button id="showCreate" class="active">Create Room</button>
+           <button id="showJoin">Join Room</button>
+  </div>
+
+  <form id="createForm" class="room-form">
+       <input type="text" id="name" placeholder="Your Name" required />
+       <input type="email" id="email" placeholder="Your Email" required />
+       <input type="text" id="roomName" placeholder="Room Name" required />
+       <button type="submit">Create Room</button>
+  </form>
+
+  <form id="joinForm" class="room-form hidden">
+       <input type="text" id="nameJoin" placeholder="Your Name" required />
+       <input type="text" id="roomJoin" placeholder="Room Code" required />
+       <button type="submit">Join Room</button>
+     </form>
+  </div>
+
+  <footer class="page-footer">Made with ❤️ by <span>Arpit Singh Yadav</span></footer>
+
+  <script>
+    const showCreateBtn = document.getElementById('showCreate');
+    const showJoinBtn = document.getElementById('showJoin');
+    const createForm = document.getElementById('createForm');
+    const joinForm = document.getElementById('joinForm');
+
+    showCreateBtn.onclick = () => {
+      createForm.classList.remove('hidden');
+      joinForm.classList.add('hidden');
+      showCreateBtn.classList.add('active');
+      showJoinBtn.classList.remove('active');
+   };
+
+    showJoinBtn.onclick = () => {
+      createForm.classList.add('hidden');
+      joinForm.classList.remove('hidden');
+      showJoinBtn.classList.add('active');
+      showCreateBtn.classList.remove('active');
+    };
+
+    createForm.onsubmit = (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const roomName = document.getElementById('roomName').value;
+      const roomCode = Math.floor(100000 + Math.random() * 900000).toString();
+      localStorage.setItem('name', name);
+      localStorage.setItem('room', roomCode);
+      localStorage.setItem('roomName', roomName);
+      // Save room in memory for validation
+      let rooms = JSON.parse(localStorage.getItem('roomList') || '{}');
+      rooms[roomCode] = roomName;
+      localStorage.setItem('roomList', JSON.stringify(rooms));
+      window.location.href = 'room.html';
+   };
+
+
+    joinForm.onsubmit = (e) => {
+      e.preventDefault();
+      const name = document.getElementById('nameJoin').value;
+      const roomCode = document.getElementById('roomJoin').value;
+      const roomList = JSON.parse(localStorage.getItem('roomList') || '{}');
+
+      if (!roomList[roomCode]) {
+          alert('❌ Invalid room code!');
+          return;
+        }
+
+       localStorage.setItem('name', name);
+       localStorage.setItem('room', roomCode);
+       localStorage.setItem('roomName', roomList[roomCode]);
+       window.location.href = 'room.html';
+  };
+
+  </script>
+</body>
+</html>

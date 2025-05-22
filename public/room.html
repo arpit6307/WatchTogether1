@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WatchTogether Room</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+
+  <header class="app-header">
+    <button id="menuToggle" aria-label="Menu">☰</button>
+    <h1 class="site-title">WatchTogether 💖</h1>
+    <button id="exitBtn" onclick="exitRoom()" aria-label="Exit">Exit</button>
+  </header>
+
+  <div id="sideMenu" class="hidden">
+     <button class="close-btn" aria-label="Close Menu">&times;</button>
+     <ul>
+        <li onclick="showYouTube()">🎥 YouTube Watch</li>
+        <!-- Add more menu items here -->
+     </ul>
+ </div>
+
+  <div class="room-container">
+    <h2 id="roomTitle">Room</h2>
+
+    <!-- Local Video Player -->
+    <video id="video" controls></video>
+
+    <form id="uploadForm">
+       <input type="file" id="videoFile" accept="video/*" />
+       <button type="submit">Upload Video</button>
+    </form>
+
+    <!-- YouTube Section -->
+    <div id="youtubeSection" class="hidden">
+      <h3>YouTube Watch Together</h3>
+      <input type="text" id="youtubeUrl" placeholder="Paste YouTube Link" />
+      <button onclick="loadYouTube()">Load YouTube</button>
+      <div id="ytPlayer"></div>
+    </div>
+
+    <!-- Chat Section -->
+    <div id="chatBox">
+      <div id="messages"></div>
+      <div style="display: flex; gap: 8px; padding: 8px;">
+      <input type="text" id="chatInput" placeholder="Type a message..." />
+      <button id="sendMsgBtn">Send</button>
+      </div>
+    </div>
+
+    <!-- <footer class="page-footer">
+           Made with ❤️ by <span>Arpit Singh Yadav</span>
+    </footer> -->
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
