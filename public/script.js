@@ -45,7 +45,10 @@ document.getElementById('uploadForm').onsubmit = async (e) => {
   if (!file) return alert("Please select a video.");
   const formData = new FormData();
   formData.append('video', file);
-  const res = await fetch('/upload', { method: 'POST', body: formData });
+  const res = await fetch('https://watchtogether1.onrender.com/upload', {
+  method: 'POST',
+  body: formData
+});
   const data = await res.json();
 
   // Play video and broadcast to others
