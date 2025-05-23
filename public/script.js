@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io('https://watchtogether1.onrender.com');
 const name = localStorage.getItem('name');
 const room = localStorage.getItem('room');
 
