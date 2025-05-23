@@ -31,58 +31,52 @@
   <footer class="page-footer">Made with ❤️ by <span>Arpit Singh Yadav</span></footer>
 
   <script>
-    const showCreateBtn = document.getElementById('showCreate');
-    const showJoinBtn = document.getElementById('showJoin');
-    const createForm = document.getElementById('createForm');
-    const joinForm = document.getElementById('joinForm');
+  const showCreateBtn = document.getElementById('showCreate');
+  const showJoinBtn = document.getElementById('showJoin');
+  const createForm = document.getElementById('createForm');
+  const joinForm = document.getElementById('joinForm');
 
-    showCreateBtn.onclick = () => {
-      createForm.classList.remove('hidden');
-      joinForm.classList.add('hidden');
-      showCreateBtn.classList.add('active');
-      showJoinBtn.classList.remove('active');
-   };
-
-    showJoinBtn.onclick = () => {
-      createForm.classList.add('hidden');
-      joinForm.classList.remove('hidden');
-      showJoinBtn.classList.add('active');
-      showCreateBtn.classList.remove('active');
-    };
-
-    createForm.onsubmit = (e) => {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const roomName = document.getElementById('roomName').value;
-      const roomCode = Math.floor(100000 + Math.random() * 900000).toString();
-      localStorage.setItem('name', name);
-      localStorage.setItem('room', roomCode);
-      localStorage.setItem('roomName', roomName);
-      // Save room in memory for validation
-      let rooms = JSON.parse(localStorage.getItem('roomList') || '{}');
-      rooms[roomCode] = roomName;
-      localStorage.setItem('roomList', JSON.stringify(rooms));
-      window.location.href = 'room.html';
-   };
-
-
-    joinForm.onsubmit = (e) => {
-      e.preventDefault();
-      const name = document.getElementById('nameJoin').value;
-      const roomCode = document.getElementById('roomJoin').value;
-      const roomList = JSON.parse(localStorage.getItem('roomList') || '{}');
-
-      if (!roomList[roomCode]) {
-          alert('❌ Invalid room code!');
-          return;
-        }
-
-       localStorage.setItem('name', name);
-       localStorage.setItem('room', roomCode);
-       localStorage.setItem('roomName', roomList[roomCode]);
-       window.location.href = 'room.html';
+  showCreateBtn.onclick = () => {
+    createForm.classList.remove('hidden');
+    joinForm.classList.add('hidden');
+    showCreateBtn.classList.add('active');
+    showJoinBtn.classList.remove('active');
   };
 
-  </script>
+  showJoinBtn.onclick = () => {
+    createForm.classList.add('hidden');
+    joinForm.classList.remove('hidden');
+    showJoinBtn.classList.add('active');
+    showCreateBtn.classList.remove('active');
+  };
+
+  createForm.onsubmit = (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const roomName = document.getElementById('roomName').value;
+    const roomCode = Math.floor(100000 + Math.random() * 900000).toString();
+    localStorage.setItem('name', name);
+    localStorage.setItem('room', roomCode);
+    localStorage.setItem('roomName', roomName);
+    window.location.href = 'room.html';
+  };
+
+  joinForm.onsubmit = (e) => {
+    e.preventDefault();
+    const name = document.getElementById('nameJoin').value;
+    const roomCode = document.getElementById('roomJoin').value;
+
+    if (!roomCode) {
+      alert('❌ Room code is required!');
+      return;
+    }
+
+    localStorage.setItem('name', name);
+    localStorage.setItem('room', roomCode);
+    localStorage.setItem('roomName', ''); // roomName is not required to join
+    window.location.href = 'room.html';
+  };
+</script>
+
 </body>
 </html>
